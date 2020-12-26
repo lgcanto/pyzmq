@@ -1,9 +1,11 @@
 version: "3.4"
 
 services: 
-  serviceA:
-    image: service-a
-    build: ./service-a/.
-  serviceB:
-    image: service-b
-    build: ./service-b/.
+  server:
+    image: server
+    build: ./server/.
+  client:
+    image: client
+    build: ./client/.
+    depends_on:
+      - server
