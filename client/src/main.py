@@ -1,5 +1,6 @@
 import zmq
 import time
+import threading
 
 if __name__ == "__main__":
     context = zmq.Context()
@@ -15,4 +16,12 @@ if __name__ == "__main__":
             print("Received message from Server: %s" % message)
             time.sleep(5)
 
-    send_messages_loop()
+    def just_print_something():
+        while True:
+            print("We're multi-threading!")
+            time.sleep(5)
+
+    send_messages_loop_thread = threading.Thread(target = send_messages_loop)
+    send_messages_loop_thread.start()
+    just_print_something_thread = threading.Thread(target = just_print_something)
+    just_print_something_thread.start()
