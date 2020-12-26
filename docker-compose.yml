@@ -1,0 +1,9 @@
+version: "3.4"
+
+services: 
+  serviceA:
+    image: service-a
+    build: ./service-a/.
+  serviceB:
+    image: service-b
+    build: ./service-b/.
